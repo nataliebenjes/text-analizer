@@ -1,17 +1,3 @@
-// Business Logic
-
-function wordCounter(text) {
-    if (text.length ===0){
-        return 0;
-    }
-    let wordCount = 0;
-    const textArray = text.split(" ");
-
-    s textArray.forEach(function(word) {
-      wordCount++;
-    });
-    return wordCount;
-  }
 
 // Business Logic -updated test
 
@@ -33,27 +19,6 @@ function wordCounter(text) {
 
 // wordCounter() function omitted for brevity.
 
-function numberOfOccurrencesInText(word, text) {
-    return 0;
-  }
-
-  function numberOfOccurrencesInText(word, text) {
-    if (word === text) {
-      return 1;
-    }
-    return 0;
-  } 
-
-  function numberOfOccurrencesInText(word, text) {
-    const textArray = text.split(" ");
-    let wordCount = 0;
-    textArray.forEach(function(element) {
-      if (word.toUpperCase() === element.toUpperCase()) {
-        wordCount++
-      }
-    });
-    return wordCount;
-  } 
 
   function numberOfOccurrencesInText(word, text) {
     const textArray = text.split(" ");
@@ -78,6 +43,21 @@ function numberOfOccurrencesInText(word, text) {
           textArray[findSwears] = newElement;
         }
       })
-      return textArray;s
+      return textArray;
 
     };
+
+    //UI logic
+    function handleFormSubmission() {
+      event.preventDefault();
+      const passage = document.getElementById("text-passage").value;
+      const word = document.getElementById("word").value;
+      const wordCount = wordCounter(passage);
+      const occurrencesOfWord = numberOfOccurrencesInText(word, passage);
+      document.getElementById("total-count").innerText = wordCount;
+      document.getElementById("selected-count").innerText = occurrencesOfWord;
+    }
+    
+    window.addEventListener("load", function() {
+      document.querySelector("form#word-counter").addEventListener("submit", handleFormSubmission);
+    });
